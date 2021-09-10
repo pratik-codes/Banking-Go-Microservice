@@ -3,8 +3,9 @@ package app
 import (
 	"encoding/json"
 	"encoding/xml"
-	"fmt"
 	"net/http"
+
+	"github.com/pratik-codes/Banking-Go-Microservice/service"
 )
 
 type Customer struct {
@@ -13,15 +14,14 @@ type Customer struct {
 	Zipcode string `json:"Zip_code" xml:"Zip_code"`
 }
 
-
-func greet(resp http.ResponseWriter, req *http.Request)  {
-	fmt.Fprint(resp, "hello world")
+type CustomerHandlers struct {
+	service service.CustomerService
 }
 
 
-func getAllCustomers(resp http.ResponseWriter, req *http.Request)  {
+func (ch *CustomerHandlers) getAllCustomers(resp http.ResponseWriter, req *http.Request)  {
 
-	customers := []Customer{{Name: "Pratik Tiwari", City: "Surat", Zipcode: "395007"},{Name: "Neil Kawde", City: "Pune", Zipcode: "411014"}}
+	customers, _ := ch.service.GetAllCustomer()
 		
 	if  req.Header.Get("Content-Type") == "application/json" {
 		resp.Header().Add("Content-Type", "application/json")
