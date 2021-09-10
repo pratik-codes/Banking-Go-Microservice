@@ -1,6 +1,8 @@
 package main
 
-import "github.com/patik-codes/Banking/app"
+import (
+	"github.com/pratik-codes/Banking-Go-Microservice/app"
+)
 
 func main() {
 

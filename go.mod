@@ -1,3 +1,3 @@
-module github.com/patik-codes/Banking
+module github.com/pratik-codes/Banking-Go-Microservice
 
 go 1.17
